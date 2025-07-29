@@ -1,0 +1,29 @@
+liquido.rotaGet(funcao(requisicao, resposta) {
+    resposta.enviar("Rota de evento ok").status(200);
+});
+liquido.rotaPost(funcao(requisicao, resposta) {
+  dados = requisicao.body;
+  licones.executar("Inserir EM Evento (nome, data, local, descricao) VALORES ('" + dados.nome + "', '" + dados.data + "', '" + dados.local +
+     "', '" + dados.descricao + "')");
+  resposta.enviar(200, "Evento inserido com sucesso");
+});
+liquido.rotaDelete(funcao(requisicao, resposta) {
+  //dados = requisicao.body;
+ // licones.executar("Deletar de Evento onde id = " + dados.id);
+  resposta.enviar(200, "Evento deletado com sucesso");
+});
+liquido.rotaPut(funcao(requisicao, resposta) {
+  dados = requisicao.body;
+  licones.executar("Atualizar Evento SET nome = '" + dados.nome + "', data = '" + dados.data + "', local = '" + dados.local +
+     "', descricao = '" + dados.descricao + "' onde id = " + dados.id);
+  resposta.enviar(200, "Evento atualizado com sucesso");
+});
+// liquido.rotaGet("/evento/:id", funcao(requisicao, resposta) {
+//   id = requisicao.params.id;
+//   dados = licones.executar("Selecionar * de Evento onde id = " + id);
+//   if (dados.length > 0) {
+//     resposta.json(dados[0]);
+//   } else {
+//     resposta.enviar(404, "Evento não encontrado");
+//   }
+// });
