@@ -7,19 +7,35 @@ liquido.rotaGet(funcao(requisicao, resposta) {
 })
 
 liquido.rotaPost(funcao(requisicao, resposta) {
-  resposta.enviar("Olá Post").status(200)
+  nome = requisicao.corpo.nome
+  if (!nome) {
+    resposta.enviar("Nome é obrigatório").status(400)
+    return
+  }
+  lincones.executar("INSERIR EM clientes (NOME) VALORES (?)", [nome])
+  resposta.enviar("Cliente adicionado com sucesso").status(201)
 })
 
 liquido.rotaPut(funcao(requisicao, resposta) {
-  resposta.enviar("Olá Put").status(200)
+  var id = requisicao.parametros.id
+  var nome = requisicao.corpo.nome
+  lincones.executar("ATUALIZAR clientes DEFINIR NOME = ? ONDE ID = ?", [nome, id])
+  resposta.enviar("Cliente atualizado com sucesso").status(200)
 })
 
 liquido.rotaDelete(funcao(requisicao, resposta) { 
   resposta.enviar("Olá Delete").status(200)
 })
 
-liquido.rotaPatch(funcao(requisicao, resposta) { 
-  resposta.enviar("Olá Patch").status(200)
+liquido.rotaPatch(funcao(requisicao, resposta) {
+  var id = requisicao.parametros.id
+  var nome = requisicao.corpo.nome
+  if (!id || !nome) {
+    resposta.enviar("ID e Nome são obrigatórios").status(400)
+    return
+  }
+  lincones.executar("ATUALIZAR clientes DEFINIR NOME = ? ONDE ID = ?", [nome, id])
+  resposta.enviar("Cliente atualizado parcialmente com sucesso").status(200)
 })
 
 liquido.rotaOptions(funcao(requisicao, resposta) {
