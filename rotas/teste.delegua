@@ -1,0 +1,3 @@
+liquido.rotaDelete(funcao(requisicao, resposta) {
+ resposta.enviar("Olá Delete").status(200)
+})

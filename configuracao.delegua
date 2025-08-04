@@ -1,3 +1,4 @@
+liquido.roteador.diretorioEstatico = 'publico'
 liquido.roteador.cors = verdadeiro
 liquido.roteador.bodyParser = verdadeiro
 liquido.roteador.morgan = verdadeiro
