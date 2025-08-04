@@ -1,3 +1,60 @@
-liquido.rotaDelete(funcao(requisicao, resposta) {
- resposta.enviar("Olá Delete").status(200)
+
+liquido.rotaPost(funcao(requisicao, resposta) {
+  nome = requisicao.corpo.nome
+  if (!nome) {
+    resposta.enviar("Nome é obrigatório").status(400)
+    return
+  }
+  lincones.executar("INSERIR EM clientes (NOME) VALORES (?)", [nome])
+  resposta.enviar("Cliente adicionado com sucesso").status(201)
+})
+
+liquido.rotaPut(funcao(requisicao, resposta) {
+  var id = requisicao.parametros.id
+  var nome = requisicao.corpo.nome
+  lincones.executar("ATUALIZAR clientes DEFINIR NOME = ? ONDE ID = ?", [nome, id])
+  resposta.enviar("Cliente atualizado com sucesso").status(200)
+})
+
+liquido.rotaDelete(funcao(requisicao, resposta) { 
+  resposta.enviar("Olá Delete").status(200)
+})
+
+liquido.rotaPatch(funcao(requisicao, resposta) {
+  var id = requisicao.parametros.id
+  var nome = requisicao.corpo.nome
+  if (!id || !nome) {
+    resposta.enviar("ID e Nome são obrigatórios").status(400)
+    return
+  }
+  lincones.executar("ATUALIZAR clientes DEFINIR NOME = ? ONDE ID = ?", [nome, id])
+  resposta.enviar("Cliente atualizado parcialmente com sucesso").status(200)
+})
+
+liquido.rotaOptions(funcao(requisicao, resposta) {
+  resposta.status(200)
+})
+
+liquido.rotaCopy(funcao(requisicao, resposta) { 
+  resposta.enviar("Olá Copy").status(200)
+})
+
+liquido.rotaHead(funcao(requisicao, resposta) {
+  resposta.enviar("Olá Head").status(200)
+})
+
+liquido.rotaLock(funcao(requisicao, resposta) {
+  resposta.enviar("Olá Lock").status(200)
+})
+
+liquido.rotaUnlock(funcao(requisicao, resposta) {
+  resposta.enviar("Olá Unlock").status(200)
+})
+
+liquido.rotaPurge(funcao(requisicao, resposta) {
+  resposta.enviar("Olá Purge").status(200)
+})
+
+liquido.rotaPropfind(funcao(requisicao, resposta) {
+  resposta.enviar("Olá Propfind").status(200)
 })

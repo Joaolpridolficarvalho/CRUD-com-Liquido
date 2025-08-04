@@ -1,0 +1,21 @@
+Método ou propriedade para objeto ou primitiva não encontrado: parametros.Error: Método ou propriedade para objeto ou
+primitiva não encontrado: parametros.
+at InterpretadorComImportacao.visitarExpressaoAcessoMetodoOuPropriedade
+(D:\Documentos\CRUD-com-Liquido\node_modules\@designliquido\delegua\interpretador\interpretador.js:356:31)
+at async AcessoMetodoOuPropriedade.aceitar
+(D:\Documentos\CRUD-com-Liquido\node_modules\@designliquido\delegua\construtos\acesso-metodo-ou-propriedade.js:19:16)
+at async InterpretadorComImportacao.avaliar
+(D:\Documentos\CRUD-com-Liquido\node_modules\@designliquido\delegua\interpretador\interpretador-base.js:168:16)
+at async InterpretadorComImportacao.visitarExpressaoAcessoMetodoOuPropriedade
+(D:\Documentos\CRUD-com-Liquido\node_modules\@designliquido\delegua\interpretador\interpretador.js:289:30)
+at async AcessoMetodoOuPropriedade.aceitar
+(D:\Documentos\CRUD-com-Liquido\node_modules\@designliquido\delegua\construtos\acesso-metodo-ou-propriedade.js:19:16)
+at async InterpretadorComImportacao.avaliar
+(D:\Documentos\CRUD-com-Liquido\node_modules\@designliquido\delegua\interpretador\interpretador-base.js:168:16)
+at async InterpretadorComImportacao.avaliacaoDeclaracaoVarOuConst
+(D:\Documentos\CRUD-com-Liquido\node_modules\@designliquido\delegua\interpretador\interpretador.js:128:36)
+at async InterpretadorComImportacao.visitarDeclaracaoVar
+(D:\Documentos\CRUD-com-Liquido\node_modules\@designliquido\delegua\interpretador\interpretador-base.js:1232:28)
+at async Var.aceitar (D:\Documentos\CRUD-com-Liquido\node_modules\@designliquido\delegua\declaracoes\var.js:25:16)
+at async InterpretadorComImportacao.executar
+(D:\Documentos\CRUD-com-Liquido\node_modules\@designliquido\delegua\interpretador\interpretador-base.js:1321:27)
