@@ -13,13 +13,12 @@ liquido.rotaPut(funcao(requisicao, resposta) {
   var id = requisicao.parametros.id
   var nome = requisicao.corpo.nome
   lincones.executar("ATUALIZAR clientes DEFINIR NOME = ? ONDE ID = ?", [nome, id])
-  resposta.enviar("Cliente atualizado com sucesso").status(200)
+    resposta.lmht({ "titulo": "HTML5" }).status(200)
 })
-
-liquido.rotaDelete(funcao(requisicao, resposta) { 
-  resposta.enviar("Olá Delete").status(200)
+liquido.rotaDelete(funcao(requisicao, resposta) {
+    lincones.executar("DELETAR DE clientes ONDE ID = " + requisicao.parametros.id)
+    resposta.lmht({"mensagem": "Cliente removido com sucesso"}).status(200)
 })
-
 liquido.rotaPatch(funcao(requisicao, resposta) {
   var id = requisicao.parametros.id
   var nome = requisicao.corpo.nome
@@ -28,6 +27,8 @@ liquido.rotaPatch(funcao(requisicao, resposta) {
     return
   }
   lincones.executar("ATUALIZAR clientes DEFINIR NOME = ? ONDE ID = ?", [nome, id])
+  var cliente = lincones.executar("SELECIONAR * DE clientes ONDE ID = ?", [id])
+  resposta.lmht(cliente).status(200)
   resposta.enviar("Cliente atualizado parcialmente com sucesso").status(200)
 })
 
