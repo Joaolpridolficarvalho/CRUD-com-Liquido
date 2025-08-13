@@ -15,3 +15,10 @@ liquido.rotaDelete(funcao(requisicao, resposta) {
 liquido.rotaPost(funcao(requisicao, resposta) {
     resposta.redirecionar("/artigos")
 })
+
+liquido.rotaPut(funcao(requisicao, resposta) {
+  var id = requisicao.parametros.id
+  var nome = requisicao.corpo.nome
+  lincones.executar("ATUALIZAR clientes DEFINIR NOME = ? ONDE ID = ?", [nome, id])
+    resposta.lmht({ "titulo": "HTML5" }).status(200)
+})
