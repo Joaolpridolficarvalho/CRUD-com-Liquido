@@ -11,9 +11,14 @@ liquido.rotaDelete(funcao(requisicao, resposta) {
     lincones.executar("EXCLUIR DE clientes ONDE ID = ?", [id])
     resposta.enviar("Cliente excluído com sucesso").status(200)
 })
-
 liquido.rotaPost(funcao(requisicao, resposta) {
-    resposta.redirecionar("/artigos")
+  var nome = requisicao.corpo.nome // Aqui
+  if (!nome) {
+    resposta.enviar("Nome é obrigatório").status(400)
+    return
+  }
+  lincones.executar("INSERIR EM clientes (NOME) VALORES (?)", [nome])
+  resposta.enviar("Cliente adicionado com sucesso").status(201)
 })
 
 liquido.rotaPut(funcao(requisicao, resposta) {

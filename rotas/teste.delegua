@@ -1,6 +1,5 @@
-
 liquido.rotaPost(funcao(requisicao, resposta) {
-  nome = requisicao.corpo.nome
+  var nome = requisicao.corpo.nome // Aqui
   if (!nome) {
     resposta.enviar("Nome é obrigatório").status(400)
     return
@@ -31,9 +30,16 @@ liquido.rotaPatch(funcao(requisicao, resposta) {
   resposta.lmht(cliente).status(200)
   resposta.enviar("Cliente atualizado parcialmente com sucesso").status(200)
 })
+liquido.rotaGet(funcao(requisicao, resposta) {
+    lincones.executar("CRIAR TABELA clientes (ID INTEIRO NAO NULO CHAVE PRIMARIA AUTO INCREMENTO, NOME TEXTO(100) NAO NULO)")
+    lincones.executar("INSERIR EM clientes (NOME) VALORES ('Pernalonga')")
+    lincones.executar("INSERIR EM clientes (NOME) VALORES ('Patolino')")
+    var teste = lincones.executar("SELECIONAR * DE clientes")
+    resposta.enviar({"linhas": teste.linhasRetornadas}).status(200)
+})
 
 liquido.rotaOptions(funcao(requisicao, resposta) {
-  resposta.status(200)
+  resposta.enviar("Olá Options").status(200)
 })
 
 liquido.rotaCopy(funcao(requisicao, resposta) { 
@@ -59,3 +65,4 @@ liquido.rotaPurge(funcao(requisicao, resposta) {
 liquido.rotaPropfind(funcao(requisicao, resposta) {
   resposta.enviar("Olá Propfind").status(200)
 })
+
