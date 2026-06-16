@@ -1,0 +1,16 @@
+{
+  "name": "teste_mvc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "liquido": "node ./node_modules/liquido/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "liquido": "^1.2.0"
+  }
+}
