@@ -1,3 +1,8 @@
 @liquido.rotaGet("/")
 funcao minha_rota_get(requisicao, resposta):
     resposta.enviar("Olá mundo").status(200)
+
+funcao teste(requisicao, resposta):
+    resposta.lmht({"titulo": "index"})
+
+# Para testes comente uma das rotas acima.
